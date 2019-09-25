@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import com.zhan.hy.utils.ClickUtil
 
 /**
  * @author  hyzhan
@@ -34,6 +35,11 @@ fun Activity.hideKeyboard() {
 // 获取text内容
 fun TextView.str(): String {
     return this.text.toString()
+}
+
+// 设置双击事件
+fun View.setDoubleClickListener(block: () -> Unit) {
+    this.setOnClickListener { ClickUtil.interval(block) }
 }
 
 
