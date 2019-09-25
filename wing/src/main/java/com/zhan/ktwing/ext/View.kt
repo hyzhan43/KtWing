@@ -1,11 +1,11 @@
-package com.zhan.hy.ext
+package com.zhan.ktwing.ext
 
 import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import com.zhan.hy.utils.ClickUtil
+import com.zhan.ktwing.utils.ClickUtil
 
 /**
  * @author  hyzhan

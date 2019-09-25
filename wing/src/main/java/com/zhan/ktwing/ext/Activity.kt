@@ -1,10 +1,10 @@
-package com.zhan.hy.ext
+package com.zhan.ktwing.ext
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.Fragment
-import com.zhan.hy.utils.IntentUtils
+import com.zhan.ktwing.utils.IntentUtils
 
 /**
  * author：  HyZhan

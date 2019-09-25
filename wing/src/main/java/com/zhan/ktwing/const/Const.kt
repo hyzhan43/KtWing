@@ -1,4 +1,4 @@
-package com.zhan.hy.const
+package com.zhan.ktwing.const
 
 /**
  *  @author: HyJame

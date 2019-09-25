@@ -1,7 +1,7 @@
-package com.zhan.hy.ext
+package com.zhan.ktwing.ext
 
 import android.util.Log
-import com.zhan.hy.const.Const
+import com.zhan.ktwing.const.Const
 
 /**
  *  @author: HyJame
