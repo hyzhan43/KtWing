@@ -13,8 +13,6 @@ object KtWing{
 
     fun init(context: Context){
 
-        Toasts.init(context)
-
         Preference.init(context)
     }
 }
