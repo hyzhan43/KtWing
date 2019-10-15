@@ -5,11 +5,3 @@ package com.zhan.ktwing.ext
  * @date    2019/5/22
  * @desc    TODO
  */
-inline fun tryCatch(tryBlock: () -> Unit, catchBlock: (Throwable) -> Unit = {}) {
-    try {
-        tryBlock()
-    } catch (t: Throwable) {
-        t.printStackTrace()
-        catchBlock(t)
-    }
-}

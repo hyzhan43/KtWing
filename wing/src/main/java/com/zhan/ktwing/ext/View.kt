@@ -14,13 +14,15 @@ import com.zhan.ktwing.utils.ClickUtil
  */
 // 关闭软键盘
 fun View.hideKeyboard() {
-    val imm: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val imm: InputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(this.windowToken, 0)
 }
 
 // 显示软键盘
 fun View.showKeyboard() {
-    val imm: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val imm: InputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     this.requestFocus()
     imm.showSoftInput(this, 0)
 }
@@ -54,3 +56,9 @@ fun View.invisible() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+fun View.isVisible(): Boolean = this.visibility == View.VISIBLE
+
+fun View.isInvisible(): Boolean = this.visibility == View.INVISIBLE
+
+fun View.isGone(): Boolean = this.visibility == View.GONE
