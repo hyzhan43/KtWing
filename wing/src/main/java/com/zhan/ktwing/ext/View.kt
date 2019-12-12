@@ -41,7 +41,17 @@ fun TextView.str(): String {
 
 // 设置双击事件
 fun View.setDoubleClickListener(block: () -> Unit) {
-    this.setOnClickListener { ClickUtil.interval(block) }
+    this.setOnClickListener {
+        ClickUtil.interval { block() }
+    }
+}
+
+
+// 设置 三击事件
+fun View.setTripleClickListener(block: () -> Unit) {
+    this.setOnClickListener {
+        ClickUtil.interval(3) { block() }
+    }
 }
 
 
