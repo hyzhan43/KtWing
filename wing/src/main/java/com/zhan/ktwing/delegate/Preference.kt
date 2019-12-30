@@ -1,4 +1,4 @@
-package com.zhan.ktwing.common
+package com.zhan.ktwing.delegate
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,7 +9,7 @@ import kotlin.reflect.KProperty
 /**
  *  @author: hyzhan
  *  @date:   2019/5/17
- *  @desc:   TODO
+ *  @desc:   SharedPreference 封装的代理类
  */
 class Preference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
 

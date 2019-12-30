@@ -1,8 +1,7 @@
 package com.zhan.ktwing
 
 import android.content.Context
-import com.zhan.ktwing.common.Preference
-import com.zhan.ktwing.ext.Toasts
+import com.zhan.ktwing.delegate.Preference
 
 /**
  *  @author: HyJame
