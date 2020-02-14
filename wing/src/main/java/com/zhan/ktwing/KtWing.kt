@@ -8,10 +8,9 @@ import com.zhan.ktwing.delegate.Preference
  *  @date:   2019-09-25
  *  @desc:   KtWing 初始化
  */
-object KtWing{
+object KtWing {
 
-    fun init(context: Context){
-
+    fun init(context: Context) {
         Preference.init(context)
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KtWing</string>
+    <string name="test_intent_extra">测试intent extra</string>
 </resources>
