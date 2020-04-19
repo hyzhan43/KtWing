@@ -1,5 +1,6 @@
 package com.zhan.ktwing.ext
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.view.View
@@ -15,6 +16,18 @@ import androidx.fragment.app.Fragment
 object Toasts {
 
     private var mToast: Toast? = null
+
+    @SuppressLint("ShowToast")
+    fun init(context: Context) {
+        mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT)
+    }
+
+    /**
+     *  application级别 toast
+     */
+    fun show(message: String) {
+        mToast?.apply { setText(message) }?.show()
+    }
 
     /**
      *  如果 mToast 没有初始化, 就创建一个 Toast, 并赋值

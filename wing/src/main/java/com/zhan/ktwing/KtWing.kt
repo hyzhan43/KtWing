@@ -1,7 +1,8 @@
 package com.zhan.ktwing
 
-import android.content.Context
+import android.app.Application
 import com.zhan.ktwing.delegate.Preference
+import com.zhan.ktwing.ext.Toasts
 
 /**
  *  @author: HyJame
@@ -10,7 +11,9 @@ import com.zhan.ktwing.delegate.Preference
  */
 object KtWing {
 
-    fun init(context: Context) {
-        Preference.init(context)
+    internal fun init(application: Application) {
+        Preference.init(application)
+
+        Toasts.init(application)
     }
 }

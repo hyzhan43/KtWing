@@ -7,11 +7,11 @@ import com.zhan.ktwing.KtWing
 /**
  *  author: HyJame
  *  date:   2019-12-04
- *  desc:   默认初始化 KtArmor, 并提供 全局 applicationContext
+ *  desc:   默认初始化 KtWing, 并提供 全局 applicationContext
  */
 object ContextProvider {
 
-    lateinit var application: Application
+    private lateinit var application: Application
 
     fun attachContext(context: Context?) {
         application = context as? Application ?: throw RuntimeException("init KtWing error !")
