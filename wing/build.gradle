@@ -38,6 +38,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
 
-    implementation 'com.github.hyzhan43:Robot:1.0.0'
+/**
+ *  生成本地依赖, 便于测试
+ */
+afterEvaluate { project ->
+    uploadArchives {
+        repositories {
+            def localMavenUrl = mavenLocal().getUrl()
+            mavenDeployer {
+                repository(url: localMavenUrl)
+                pom.groupId = "com.github.hyzhan43"
+                pom.artifactId = "KtWing"
+                pom.version = "1.0.3"
+            }
+        }
+    }
 }
