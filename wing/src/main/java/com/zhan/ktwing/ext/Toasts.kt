@@ -2,7 +2,9 @@ package com.zhan.ktwing.ext
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.Context
+import android.os.Build
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
@@ -15,39 +17,62 @@ import androidx.fragment.app.Fragment
  */
 object Toasts {
 
+    // 局部toast
     private var mToast: Toast? = null
 
+    // 全局toast
+    private var appToast: Toast? = null
+
+    private lateinit var application: Application
+
+    /**
+     *  初始化 application 级别 toast
+     */
     @SuppressLint("ShowToast")
-    fun init(context: Context) {
-        mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT)
+    fun init(application: Application) {
+        this.application = application
+        appToast = Toast.makeText(application, "", Toast.LENGTH_SHORT)
     }
 
     /**
      *  application级别 toast
      */
     fun show(message: String) {
-        mToast?.apply { setText(message) }?.show()
-    }
-
-    /**
-     *  如果 mToast 没有初始化, 就创建一个 Toast, 并赋值
-     *  否则就直接显示
-     */
-    private fun <T : Context> showToast(context: T, message: String, duration: Int) {
-        mToast?.let {
-            it.duration = duration
-            it.setText(message)
-            it.show()
-        } ?: Toast.makeText(context.applicationContext, message, duration).apply {
-            mToast = this
-            show()
+        // 兼容 Android 9.0 toast 显示问题(只会显示一次问题)
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P) {
+            Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+            return
         }
+
+        appToast?.apply { setText(message) }?.show()
     }
 
     /**
      *  防止重复 showToast 显示
      *  如果 mToast不为空 就显示, 否则就创建新的 mToast
      */
+    private fun <T : Context> showToast(context: T, message: String, duration: Int) {
+
+        // 兼容 Android 9.0 toast 显示一次问题
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P) {
+            Toast.makeText(context, message, duration).show()
+            return
+        }
+
+        (getCacheToast(duration, message) ?: newToast(context, message, duration)).show()
+    }
+
+    private fun getCacheToast(duration: Int, message: String): Toast? {
+        return mToast?.apply {
+            this.duration = duration
+            setText(message)
+        }
+    }
+
+    private fun <T : Context> newToast(context: T, message: String, duration: Int): Toast {
+        return Toast.makeText(context.applicationContext, message, duration).apply { mToast = this }
+    }
+
     fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
         showToast(this, message, duration)
     }

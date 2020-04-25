@@ -7,10 +7,16 @@
     tools:context="com.zhan.hy.MainActivity">
 
     <Button
-        android:id="@+id/mBtnHello"
-        android:layout_width="wrap_content"
+        android:id="@+id/mBtnToast"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="@string/toast" />
+
+    <Button
+        android:id="@+id/mBtnAppToast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_toast" />
 
     <Button
         android:id="@+id/mBtnIntent"
